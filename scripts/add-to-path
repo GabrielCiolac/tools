@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+if [[ $# -eq 0 ]]
+then
+    echo "\$PATH:${PWD}" >> ~/.zshrc
+elif [[ $# -eq 1 ]]
+then
+    "\$PATH:${1}" >> ~/.zshrc
+elif [[ $# -eq 2 ]]
+then
+    "\$PATH:${1}" >> ${2}
+fi

@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+
+if ! brew --version; then
+    echo "Brew not found, installing (rerun script when done)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi 
+
+if ! docker --version; then
+    brew install docker
+    brew install docker-credential-helper
+fi
+
+if ! colima version; then
+    brew install colima
+fi
+
+colima start
