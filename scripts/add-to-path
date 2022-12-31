@@ -2,11 +2,14 @@
 
 if [[ $# -eq 0 ]]
 then
+    echo "Writing '${PWD}' to '.zshrc'"
     echo "\$PATH:${PWD}" >> ~/.zshrc
 elif [[ $# -eq 1 ]]
 then
-    "\$PATH:${1}" >> ~/.zshrc
+    echo "Writing '${1}' to '.zshrc'"
+    echo "\$PATH:${1}" >> ~/.zshrc
 elif [[ $# -eq 2 ]]
 then
-    "\$PATH:${1}" >> ${2}
+    echo "Writing '${1}' to '.${2}'"
+    echo >> "\$PATH:${1}" >> ${2}
 fi
