@@ -1,3 +1,3 @@
 #!/usr/bin/env zsh
 
-docker run --user=root --pull=always --rm -it -v "${PWD}":/workdir --workdir=/workdir docker.io/megapead/personal-toolkit:latest "${@}"
+docker run --user=root --pull=always --rm -it -v "${PWD}":/workdir --workdir=/workdir ghcr.io/gabrielciolac/personal-toolkit:main "${@}"
