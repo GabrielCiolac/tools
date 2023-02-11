@@ -1,3 +1,4 @@
 #!/usr/bin/env zsh
+$PATH:/Users/gabrielciolac/Documents/tools/scripts
 
-docker run --user=root --pull=always --rm -it -v "${PWD}":/workdir --workdir=/workdir ghcr.io/gabrielciolac/personal-toolkit:main "${@}"
+docker run --platform linux/x86_64 --user=root --pull=always --rm -it -v "${PWD}":/workdir --workdir=/workdir ghcr.io/gabrielciolac/personal-toolkit:main "${@}"
