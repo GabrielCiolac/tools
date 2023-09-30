@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 git fetch
-git checkout origin/master
+git checkout origin/main
 git pull --rebase
 git checkout -b "${1}"
