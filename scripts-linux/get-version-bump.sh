@@ -6,8 +6,8 @@
 # get the latest tag
 latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
 
-# get the commit messages from the last MR
-commit_messages=$(git log --pretty=format:"%s" $(git rev-list -n 1 $latest_tag^))
+# get the commit messages since the last tag
+commit_messages=$(git log --pretty=format:"%s" $latest_tag..HEAD)
 
 # parse tag into variables major, minor, and patch
 major=$(echo $latest_tag | cut -d '.' -f 1)
