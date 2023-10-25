@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker run --platform linux/x86_64 --user=root --pull=always --rm -it -v "${PWD}":/workdir --workdir=/workdir ghcr.io/gabrielciolac/personal-toolkit:main "${@}"
+docker run --platform linux/x86_64 --user=root --pull=always --rm -it -v "${PWD}":/workdir --workdir=/workdir ghcr.io/gabrielciolac/personal-toolkit:1.1.0 "${@}"
