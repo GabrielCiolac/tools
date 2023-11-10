@@ -5,11 +5,6 @@ get-latest-tag(){
     echo "${LATEST_TAG}"
 }
 
-
-get-version-bump(){
-    echo "$(get-version-bump)"
-}
-
 git fetch
 git checkout main
 echo "Latest tag: $(get-latest-tag)"
