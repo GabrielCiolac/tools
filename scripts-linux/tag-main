@@ -6,6 +6,7 @@ get-latest-tag(){
 }
 
 git fetch
+git pull --rebase
 git checkout main
 echo "Latest tag: $(get-latest-tag)"
 VERSION_BUMP=$(get-version-bump)
