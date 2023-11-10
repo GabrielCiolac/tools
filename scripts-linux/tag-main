@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
 get-latest-tag(){
-    latest_tag = git.describe --tags $(git rev-list --tags --max-count=1)
-    return latest_tag
+    LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
+    echo "${LATEST_TAG}"
 }
 
 
 get-version-bump(){
-    return $(get-version-bump)
+    echo "$(get-version-bump)"
 }
 
+git fetch
 git checkout main
 echo "Latest tag: $(get-latest-tag)"
 VERSION_BUMP=$(get-version-bump)
