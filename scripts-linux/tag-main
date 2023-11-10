@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+get-latest-tag(){
+    latest_tag = git.describe --tags $(git rev-list --tags --max-count=1)
+    return latest_tag
+}
+
+
+get-version-bump(){
+    return $(get-version-bump)
+}
+
+git checkout main
+echo "Latest tag: $(get-latest-tag)"
+VERSION_BUMP=$(get-version-bump)
+echo "Version bump: $VERSION_BUMP"
+git tag $VERSION_BUMP
+git push origin $VERSION_BUMP
+
+
+
+
