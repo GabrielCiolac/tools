@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+SYSTEMD_DROPIN="/etc/systemd/system"
+
+usage () {
+    echo "drop-in <name.service> <drop-in.conf> [--dev]"
+    echo "  --dev[optional]: cwd is assumed a project, uses the install folder"
+    echo "  <name.service>: the name of the service to drop-in"
+    echo "  <drop-in.conf>: the drop-in configuration file"
+}
+
+
+
+# check if --dev is passed
+if [[ $3 == "--dev" ]]; then
+    SYSTEMD_DROPIN="$(pwd)/install/etc/systemd/system"
+fi
+
+SERVICE_DROPIN="$SYSTEMD_DROPIN/$1.d"
+mkdir -p $SERVICE_DROPIN
+touch "$SERVICE_DROPIN/$2"
