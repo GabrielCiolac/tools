@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+if ! brew --version; then
+    echo "Brew not found, installing (rerun script when done)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    # insert into .bash_profile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.bash_profile
+fi
+
+brew install autoconf bash binutils coreutils diffutils ed findutils flex gawk \
+    gnu-indent gnu-sed gnu-tar gnu-which gpatch grep gzip less m4 make nano \
+    screen watch wdiff wget zip
+
+brew install bash
+brew install vim
+
+# insert /opt/homebrew/bin/bash into /etc/shells
+if ! grep -q /opt/homebrew/bin/bash /etc/shells; then
+    echo "/opt/homebrew/bin/bash" | sudo tee -a /etc/shells
+fi
