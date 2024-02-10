@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+BASE_COMMAND="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+
+usage() {
+    echo "Usage: $0 [--soc] [--charger-status] [--warn] [--help]"
+    echo "  --soc: print battery state of charge"
+    echo "  --charger-status: print battery charger status"
+    echo "  --warn: exit non-zero if battery is low"
+    echo "  --help: print this help message"
+    echo "  no arguments: print battery state of charge and charger status"
+}
+
+
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+fi
+
+while [ $# -gt 0 ]; do
+    case $1 in
+        --soc)
+            $BASE_COMMAND | grep percentage | awk '{print $2}'
+            ;;
+        --charger-status)
+            $BASE_COMMAND | grep state | awk '{print $2}'
+            ;;
+        --warn)
+            soc=$($BASE_COMMAND | grep percentage | awk '{print $2}' | tr -d '%')
+            if [ $soc -lt 20 ]; then
+                exit 1
+            fi
+            ;;
+        --help)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown argument: $1"
+            usage
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+
+

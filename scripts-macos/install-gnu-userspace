@@ -21,3 +21,13 @@ brew install vim
 if ! grep -q /opt/homebrew/bin/bash /etc/shells; then
     echo "/opt/homebrew/bin/bash" | sudo tee -a /etc/shells
 fi
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# insert into .vimrc
+cat <<EOF > ~/.vimrc
+call plug#begin( ) 
+Plug 'lervag/vimtex'
+call plug#end()
+EOF
